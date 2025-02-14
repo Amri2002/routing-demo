@@ -1,22 +1,20 @@
-export default function Docs({
+export default async function Docs({
     params,
 }: {
-    params: {
+    params: Promise<{
         slug: string[];
-    };
-}){
-    if (params.slug?.length ===2) {
+    }>;
+}) {
+    const resolvedParams = await params;
+
+    if (resolvedParams.slug?.length === 2) {
         return (
             <h1>
-                Viewing docs for feature {params.slug[0]} and Concept {params.slug[1]}.
+                Viewing docs for feature {resolvedParams.slug[0]} and concept {resolvedParams.slug[1]}
             </h1>
         );
-    }else if (params.slug?.length ===1) {
-        return (
-            <h1>
-                Viewing docs for feature {params.slug[0]}
-            </h1>
-        );
+    } else if (resolvedParams.slug?.length === 1) {
+        return <h1>Viewing docs for feature {resolvedParams.slug[0]}</h1>;
     }
-    return <h1>Docs home page </h1>;
+    return <h1>Docs home page</h1>;
 }

@@ -1,23 +1,24 @@
 import { Metadata } from "next";
 
 type Props = {
-    params: {
-        productId: string
-    }
-}
+    params: Promise<{
+        productId: string;
+    }>;
+};
 
-export const generateMetadata = async ({params}: Props): Promise<Metadata> => {
-    const title = await new Promise (resolve => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+    const resolvedParams = await params;
+    const title = await new Promise<string>((resolve) => {
         setTimeout(() => {
-            resolve (`iPhone ${params.productId}`)
-        }, 100)
-    })
+            resolve(`iPhone ${resolvedParams.productId}`);
+        }, 100);
+    });
     return {
         title: `Product ${title}`,
     };
 };
 
-
-export default function ProductDetails({params}: Props) {
-    return <h1>Details about product {params.productId}</h1>
+export default async function ProductDetails({ params }: Props) {
+    const resolvedParams = await params;
+    return <h1>Details about product {resolvedParams.productId}</h1>;
 }
