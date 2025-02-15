@@ -1,4 +1,3 @@
-"use client";
 import { notFound } from "next/navigation";
 
 function getRandomInt(count: number) {
@@ -17,9 +16,9 @@ export default async function ReviewDetail({ params }: PageProps) {
 
     const random = getRandomInt(2);
 
-    if (random === 1) {
+ /*   if (random === 1) {
         throw new Error("Error loading review");
-    }
+    }*/
 
     if (parseInt(resolvedParams.reviewId) > 1000) {
         notFound();
