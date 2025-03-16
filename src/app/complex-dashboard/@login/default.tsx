@@ -1,5 +1,5 @@
-import Card from "@/app/components/card"
+import Card from "@/app/components/card";
 
-export default function DefaultLogin(){
-    return <Card>Please login to continue</Card>
+export default function DefaultLogin() {
+  return <Card>Please login to continue - default</Card>;
 }

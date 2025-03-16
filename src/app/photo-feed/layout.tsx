@@ -6,6 +6,7 @@ export default function Layout(props: {
 }) {
   return (
     <>
+      <h1>Header</h1>
       {props.modal}
       {props.children}
     </>

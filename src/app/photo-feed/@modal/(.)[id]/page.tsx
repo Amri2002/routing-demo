@@ -12,6 +12,7 @@ export default async function PhotoModal({
 
   return (
     <Modal>
+      <h1>Intercepting Modal</h1>
       <Image
         alt={photo.name}
         src={photo.src}
